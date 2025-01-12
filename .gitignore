@@ -1,0 +1,39 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/TCPService/ClientApp/obj
+.vscode/
+.idea/
+*.iml
+*.dll
+*.exe
+*.obj
+node_modules/
+bin/
+obj/
+build/
+.DS_Store
+Thumbs.db
+*.bak
+*.swp
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node.js dependencies
+node_modules/
+
+# Build output
+bin/
+obj/
+build/
+
+# Python virtual environment
+.venv/
+/.vs
+/TCPService/.vs
