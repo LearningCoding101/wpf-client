@@ -23,11 +23,14 @@ namespace ServerApplication.Model
                 TcpListener server = null;
                 try
                 {
-                    server = new TcpListener(IPAddress.Parse(host), port);
+                    server = new TcpListener(IPAddress.Any, port);
 
                     server.Start();
 
                     OnLog?.Invoke("Server started!");
+                    string localIP = GetLocalIPAddress();
+                    OnLog?.Invoke($"Server started on {localIP}:{port}. Waiting for connections...");
+
                     while (true)
                     {
                         TcpClient client = server.AcceptTcpClient();
@@ -102,6 +105,30 @@ namespace ServerApplication.Model
             }
 
 
+        }
+        private string GetLocalIPAddress()
+        {
+            string localIP = "127.0.0.1"; // Default to localhost if unable to detect
+
+            try
+            {
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (var ip in host.AddressList)
+                {
+                    // Filter for IPv4 addresses and non-loopback addresses
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        localIP = ip.ToString();
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                OnLog?.Invoke($"Error getting local IP address: {ex.Message}");
+            }
+
+            return localIP;
         }
 
         public void BroadcastMessage(string message, TcpClient excludeClient = null)

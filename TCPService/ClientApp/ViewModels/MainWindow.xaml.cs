@@ -28,23 +28,31 @@ namespace ClientApp
 
         private void ConnectServer(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrEmpty(UsernameInput.Text))
+            if (string.IsNullOrEmpty(UsernameInput.Text))
             {
                 MessageBox.Show("Please provide a username", "Missing username");
                 return;
             }
+
+            if (string.IsNullOrEmpty(IpAddressInput.Text))
+            {
+                MessageBox.Show("Please provide a server IP address", "Missing IP Address");
+                return;
+            }
+
             username = UsernameInput.Text;
+            string ipAddress = IpAddressInput.Text;
+
             try
             {
-                _client.ConnectServer("127.0.0.1", 13000, username);
+                _client.ConnectServer(ipAddress, 13000, username);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Cannot connect to the server", "Connection failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
-
         }
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             // Show or hide the placeholder text depending on whether the input is empty
