@@ -3,34 +3,106 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ServerApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Server Application" 
+        Height="450" 
+        Width="800"
+        Background="#2C2F33"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
     <Grid>
+        <!-- Define Rows and Columns -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <!-- Logs and Clients List -->
+            <RowDefinition Height="Auto" />
+            <!-- Message Input and Buttons -->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*" />
+            <!-- Logs -->
+            <ColumnDefinition Width="*" />
+            <!-- Clients List -->
         </Grid.ColumnDefinitions>
 
-        <!-- Logs -->
-        <TextBox x:Name="LogTextBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                 TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
-                 HorizontalScrollBarVisibility="Auto" IsReadOnly="True"/>
+        <!-- Logs Section -->
+        <Border Grid.Row="0" Grid.Column="0" Margin="10" Padding="10" Background="#202225" CornerRadius="5">
+            <TextBox x:Name="LogTextBox" 
+                     TextWrapping="Wrap" 
+                     IsReadOnly="True" 
+                     Background="Transparent"
+                     Foreground="#B9BBBE"
+                     BorderThickness="0"
+                     FontSize="14"
+                     VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Auto" />
+        </Border>
 
-        <!-- Clients -->
-        <ListBox x:Name="ClientsListBox" Grid.Row="0" Grid.Column="1" Margin="5"/>
+        <!-- Clients List Section -->
+        <Border Grid.Row="0" Grid.Column="1" Margin="10" Padding="10" Background="#202225" CornerRadius="5">
+            <StackPanel>
+                <TextBlock Text="Connected Clients" 
+                           FontSize="16" 
+                           FontWeight="Bold" 
+                           Foreground="#FFFFFF" 
+                           Margin="0,0,0,10" />
+                <ListBox x:Name="ClientsListBox" 
+                         Background="Transparent"
+                         Foreground="#B9BBBE" 
+                         BorderThickness="0" 
+                         FontSize="14" />
+            </StackPanel>
+        </Border>
 
-        <!-- Message Input -->
-        <TextBox x:Name="MessageTextBox" Grid.Row="1" Grid.Column="0" Margin="5"/>
+        <!-- Message Input and Buttons Section -->
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Padding="10" Background="#202225" CornerRadius="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <!-- Message Input -->
+                    <ColumnDefinition Width="Auto" />
+                    <!-- Buttons -->
+                </Grid.ColumnDefinitions>
 
-        <!-- Buttons -->
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-            <Button x:Name="StartButton" Content="Start Server" Margin="5" Width="100" Click="StartButton_Click"/>
-            <Button x:Name="SendButton" Content="Send" Margin="5" Width="100" Click="SendButton_Click"/>
-        </StackPanel>
+                <!-- Message Input -->
+                <TextBox x:Name="MessageTextBox"
+                         Grid.Column="0"
+                         Height="35"
+                         Margin="0,0,10,0"
+                         Background="#2C2F33"
+                         Foreground="#FFFFFF"
+                         BorderBrush="#7289DA"
+                         CaretBrush="#7289DA"
+                         FontSize="14"
+                         VerticalContentAlignment="Center" />
+
+                <!-- Buttons -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="StartButton" 
+                            Content="Start Server" 
+                            Margin="5" 
+                            Width="120" 
+                            Height="35" 
+                            Background="#7289DA" 
+                            Foreground="White" 
+                            FontWeight="Bold" 
+                            Click="StartButton_Click" 
+                            BorderThickness="0"
+                            Cursor="Hand" />
+                    <Button x:Name="SendButton" 
+                            Content="Send" 
+                            Margin="5" 
+                            Width="120" 
+                            Height="35" 
+                            Background="#43B581" 
+                            Foreground="White" 
+                            FontWeight="Bold" 
+                            Click="SendButton_Click" 
+                            BorderThickness="0"
+                            Cursor="Hand" />
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

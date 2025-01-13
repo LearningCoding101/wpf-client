@@ -35,7 +35,11 @@ namespace ServerApplication
 
         private void UpdateLog(string message)
         {
-            Dispatcher.Invoke(() => LogTextBox.AppendText($"{message}\n"));
+            Dispatcher.Invoke(() =>
+            {
+                LogTextBox.AppendText($"{message}\n");
+                LogTextBox.ScrollToEnd(); 
+            });
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
