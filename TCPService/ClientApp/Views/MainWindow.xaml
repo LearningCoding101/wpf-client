@@ -53,10 +53,6 @@
                    Grid.Column="1"
                    IsHitTestVisible="False" />
 
-        <!-- Message Input -->
-
-        <!-- Placeholder Text -->
-
         <!-- Send Button -->
         <Button Content="Send"
                 Name="SendMessageButton"
@@ -87,6 +83,8 @@
                    FontSize="24"
                    Foreground="#FFFFFF"
                    FontWeight="Bold" />
+
+        <!-- Username Input -->
         <TextBox Grid.ColumnSpan="2"
                  Name="UsernameInput"
                  HorizontalAlignment="Left"
@@ -102,15 +100,37 @@
                FontSize="18"
                Grid.ColumnSpan="2"
                Margin="10,42,681,360" />
+
+        <!-- IP Address Input -->
+        <TextBox Grid.ColumnSpan="2"
+                 Name="IpAddressInput"
+                 HorizontalAlignment="Left"
+                 Margin="10,177,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 VerticalContentAlignment="Center"
+                 HorizontalContentAlignment="Center"
+                 Width="99"
+                 Height="34" />
+        <Label Content="Enter IP"
+               Foreground="#FFFFFF"
+               FontSize="18"
+               Grid.ColumnSpan="2"
+               Margin="10,137,681,360" />
+
         <Button Content="Connect !"
                 Name="ConnectButton"
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Left"
                 Height="35"
-                Margin="10,137,0,0"
+                Margin="10,237,0,0"
                 VerticalAlignment="Top"
                 Width="99"
                 Click="ConnectServer" />
+        <Label Content="Enter IP"
+            Foreground="#FFFFFF"
+            FontSize="18"
+            Grid.ColumnSpan="2"
+            Margin="10,137,681,265" />
     </Grid>
 </Window>
-
