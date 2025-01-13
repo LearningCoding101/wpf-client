@@ -37,3 +37,4 @@ build/
 .venv/
 /.vs
 /TCPService/.vs
+/DemoHttpClient/.vs
